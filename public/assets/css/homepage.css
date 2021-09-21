@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;600&display=swap");
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+.navbar-nav > li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.nav-link {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+#banner {
+    padding: 70px;
+}
+
+#banner h1 {
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 48px;
+    color: #000716;
+    margin-bottom: 20px;
+}
+#banner p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #a9b3c1;
+}
+#banner .btn-lg {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#details {
+    text-align: center;
+    margin-top: 70px;
+    background-color: black;
+    padding-bottom: 150px;
+}
+
+#details h1 {
+    font-size: 48px;
+    text-align: center;
+    padding-top: 100px;
+    color: white;
+    font-weight: 700;
+}
+#details p {
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    color: #a9b3c1;
+}
+#details .card {
+    border-radius: 20px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+}
+
+#details .card img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 160px;
+    height: 160px;
+    margin-top: 50px;
+}
+#details h4 {
+    font-weight: 600;
+    font-size: 18px;
+}
+#details .card p {
+    font-size: 20px;
+}
+#kegiatan .title {
+    margin-top: 50px;
+    margin-bottom: 70px;
+    font-weight: 700;
+    font-size: 40px;
+}
+#kegiatan {
+    margin-top: 50px;
+}
+#kegiatan button {
+    border-radius: 100px;
+}
+#kegiatan h1 {
+    font-weight: 700;
+    font-size: 40px;
+}
+#kegiatan a {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-decoration: none;
+}
+#kegiatan .linkto {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    /* text-decoration: none; */
+}
+#kegiatan form {
+    margin-bottom: 50px;
+}
+#kegiatan .card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+#kegiatan img {
+    height: 200px;
+    margin-left: 0;
+}
+#kegiatan h4 {
+    font-weight: 600;
+    font-size: 18px;
+}
+#footer {
+    background-color: black;
+    padding-bottom: 50px;
+    color: white;
+}
+#footer img {
+    width: 100px;
+    height: 100px;
+}
+#footer .logo {
+    margin-top: 100px;
+}
+#footer .navigate {
+    margin-top: 100px;
+    color: white;
+    list-style: none;
+}
+#footer h4 {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+#footer li a {
+    color: white;
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 10px;
+}
+#footer .copyright {
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+}
+#footer i {
+    margin-top: 50px;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#footer .icon {
+    text-align: center;
+}
+#makna {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+#makna img {
+    max-height: 450px;
+}
+#makna .definisi {
+    margin-top: 100px;
+}
+#makna h1 {
+    font-weight: 700;
+    font-size: 48px;
+    color: #000716;
+    /* margin-bottom: 20px; */
+}
+#makna p {
+    font-size: 16px;
+    color: #a9b3c1;
+}
+#makna .img {
+    max-height: 400px;
+    margin-right: 50px;
+}
+#visi img {
+    max-height: 450px;
+    margin-left: 100px;
+}
+#visi {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: black;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+#visi h1 {
+    font-weight: 700;
+    font-size: 48px;
+    color: white;
+    margin-bottom: 20px;
+}
+#visi p {
+    font-size: 16px;
+    color: #a9b3c1;
+    margin-bottom: 50px;
+}
+#visi .title {
+    text-align: center;
+    margin-top: 150px;
+}
+#visi .card {
+    border-radius: 20px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 450px;
+}
+
+#visi .card img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 160px;
+    height: 160px;
+    margin-top: 50px;
+}
+#visi h4 {
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+#visi .card p {
+    text-align: justify;
+    text-align-last: center;
+    font-size: 14px;
+}
+@media (max-width: 767px) {
+    .site-footer {
+        padding-bottom: 0;
+    }
+    .site-footer .copyright-text,
+    .site-footer .social-icons {
+        text-align: center;
+    }
+    #makna img {
+        margin-top: 50px;
+        max-height: 300px;
+        margin-bottom: 50px;
+    }
+    #makna h1 {
+        margin-top: -50px;
+    }
+    #visi img {
+        /* display: none; */
+        max-height: 300px;
+    }
+}
