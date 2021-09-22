@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage.home');
-});
-Route::view('profil', 'homepage.profil');
-Route::view('kegiatan', 'homepage.kegiatan');
+Route::get('/', 'HomeController@index')->name('home');
+Route::view('profil', 'pages.profil');
+Route::view('kegiatan', 'pages.kegiatan');
+
+Route::prefix('admin')
+    ->namespace('Admin')
+    ->group(function() {
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+    });
