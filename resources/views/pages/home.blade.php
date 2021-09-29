@@ -10,7 +10,7 @@
                 <div class="col-10">
                     <p>Lahir atas dasar rasa kesadaran yang sama dari mahasiswa/i teknik sipil dari beberapa institusi dan daerah yang ada di tanah air, bahwa mahasiswa sebagai basis intelektual harus mampu meningkatkan kualitas dan kapabilitasnya.</p>
                     <div class="gap-2">
-                        <button type="button" class="btn btn-warning btn-lg">Lebih Lanjut</button>
+                        <a href="#details" type="button" class="btn btn-warning btn-lg">Lebih Lanjut</a>
                     </div>
                 </div>
                 </div>

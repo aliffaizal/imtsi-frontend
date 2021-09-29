@@ -11,8 +11,11 @@
 
   <title>IMTSI - @yield('title')</title>
 
+@stack('after-style')
+
 @include('includes.admin.style')
 
+@stack('style')
 </head>
 
 <body id="page-top">
@@ -60,14 +63,21 @@
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <form action="{{ url('logout') }}" method="POST">
+            @csrf
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" type="submit">Logout</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
 
+@stack('after-scripts')
+
 @include('includes.admin.scripts')
+
+@stack('scripts')
 
 </body>
 
