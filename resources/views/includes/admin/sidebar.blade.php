@@ -2,7 +2,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
           <div class="sidebar-brand-icon rotate-n-15">
             {{-- <i class="fas fa-laugh-wink"></i> --}}
           </div>
@@ -31,23 +31,54 @@
         <!-- Nav Item - Charts -->
 
         <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="fas fa-rss"></i>
+            <span>Kegiatan</span>
+          </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+            <div class="bg-white py-2 collapse-inner rounded">
+              {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+              <a class="collapse-item" href="{{ route('artikel.index') }}">Artikel</a>
+              <a class="collapse-item" href="{{ route('gallery.index') }}">Gallery Kegiatan</a>
+            </div>
+          </div>
+        </li>
+
+        {{-- <li class="nav-item">
           <a class="nav-link" href="{{ route('artikel.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Artikel</span></a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
           <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-book-reader"></i>
             <span>Modul</span></a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Anggota</span></a>
+            <i class="fas fa-fw fa-key"></i>
+            <span>Manajemen Akses</span></a>
         </li>
   
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-sitemap"></i>
+            <span>Keorganisasian</span>
+          </a>
+          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              {{-- data master jabatan --}}
+              <a class="collapse-item" href="{{ route('jabatan.index') }}">Jabatan</a>
+              {{-- data master divisi atau bidang --}}
+              <a class="collapse-item" href="{{ route('divisi.index') }}">Divisi</a>
+              {{-- data master keseluruhan anggota --}}
+              <a class="collapse-item" href="{{ route('keanggotaan.index') }}">Keanggotaan</a>
+            </div>
+          </div>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
   

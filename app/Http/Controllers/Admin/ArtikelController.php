@@ -56,16 +56,6 @@ class ArtikelController extends Controller
         );
 
         $artikel->save();
-        // $image_path = "";
-        // if ($request->hasFile('thumbnail')) {
-        //     # code...
-        //     $image = $request->thumbnail;
-        //     $image_name = time().$image->getClientOriginalName();
-        //     $image->move('uploads/thumbnail/', $image_name);
-
-        //     $image_path = 'uploads/thumbnail'.$image_name;
-        // }
-        // $artikel->thumbnail = $image_path;
 
         return redirect()->route('artikel.index');
     }

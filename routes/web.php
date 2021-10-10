@@ -27,6 +27,10 @@ Route::prefix('admin')
 ->group(function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('artikel', 'ArtikelController');
+    Route::resource('gallery', 'GalleryController');
+    Route::resource('jabatan', 'JabatanController');
+    Route::resource('divisi', 'DivisiController');
+    Route::resource('keanggotaan', 'KeanggotaanController');
 });
 
 Auth::routes(['verify' => true]);
