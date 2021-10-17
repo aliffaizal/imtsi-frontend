@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Divisi;
 use App\Http\Controllers\Controller;
-use App\Jabatan;
-use App\Keanggotaan;
+use App\User;
 use Illuminate\Http\Request;
 
-class KeanggotaanController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,9 @@ class KeanggotaanController extends Controller
      */
     public function index()
     {
-        $keanggotaan = Keanggotaan::all();
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.index', compact('keanggotaan', 'jabatan', 'divisi'));
+        $user = User::all();
+
+        return view('pages.admin.manajemen_akses.index', compact('user'));
     }
 
     /**
@@ -30,10 +27,7 @@ class KeanggotaanController extends Controller
      */
     public function create()
     {
-        $keanggotaan = Keanggotaan::all();
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.create', compact('keanggotaan', 'jabatan', 'divisi'));
+        //
     }
 
     /**
@@ -44,15 +38,7 @@ class KeanggotaanController extends Controller
      */
     public function store(Request $request)
     {
-        // $keanggotaan = new Keanggotaan();
-        // $keanggotaan->name = $request->name;
-        // $keanggotaan->username = $request->username;
-        // $keanggotaan->no_anggota = $request->no_anggota;
-        // $keanggotaan->email = $request->email;
-        // $keanggotaan->jabatan_id = $request->jabatan_id;
-        // $keanggotaan->divisi_id = $request->divisi_id;
-
-        
+        //
     }
 
     /**
@@ -74,10 +60,7 @@ class KeanggotaanController extends Controller
      */
     public function edit($id)
     {
-        $keanggotaan = Keanggotaan::findOrFail($id);
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.edit', compact('keanggotaan', 'jabatan', 'divisi'));
+        //
     }
 
     /**

@@ -31,6 +31,10 @@ Route::prefix('admin')
     Route::resource('jabatan', 'JabatanController');
     Route::resource('divisi', 'DivisiController');
     Route::resource('keanggotaan', 'KeanggotaanController');
+    Route::resource('user', 'UserController');
+    Route::resource('modul', 'ModulController');
+    Route::resource('wilayah', 'WilayahController');
+    Route::resource('instansi', 'InstansiController');
 });
 
 Auth::routes(['verify' => true]);

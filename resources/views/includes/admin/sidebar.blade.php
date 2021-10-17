@@ -51,13 +51,13 @@
         </li> --}}
 
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="{{ route('modul.index') }}">
             <i class="fas fa-book-reader"></i>
             <span>Modul</span></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="{{ route('user.index') }}">
             <i class="fas fa-fw fa-key"></i>
             <span>Manajemen Akses</span></a>
         </li>
@@ -73,6 +73,10 @@
               <a class="collapse-item" href="{{ route('jabatan.index') }}">Jabatan</a>
               {{-- data master divisi atau bidang --}}
               <a class="collapse-item" href="{{ route('divisi.index') }}">Divisi</a>
+
+              <a class="collapse-item" href="{{ route('wilayah.index') }}">Wilayah</a>
+
+              <a class="collapse-item" href="{{ route('instansi.index') }}">Instansi</a>
               {{-- data master keseluruhan anggota --}}
               <a class="collapse-item" href="{{ route('keanggotaan.index') }}">Keanggotaan</a>
             </div>

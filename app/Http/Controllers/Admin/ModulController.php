@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Divisi;
 use App\Http\Controllers\Controller;
-use App\Jabatan;
-use App\Keanggotaan;
+use App\Modul;
+use App\User;
+use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
-class KeanggotaanController extends Controller
+class ModulController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +19,10 @@ class KeanggotaanController extends Controller
      */
     public function index()
     {
-        $keanggotaan = Keanggotaan::all();
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.index', compact('keanggotaan', 'jabatan', 'divisi'));
+        $modul = Modul::all();
+        $user = User::all();
+
+        return view('pages.admin.modul.index', compact('modul', 'user'));
     }
 
     /**
@@ -30,10 +32,9 @@ class KeanggotaanController extends Controller
      */
     public function create()
     {
-        $keanggotaan = Keanggotaan::all();
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.create', compact('keanggotaan', 'jabatan', 'divisi'));
+        $user = User::all();
+
+        return view('pages.admin.modul.create', compact('user'));
     }
 
     /**
@@ -44,15 +45,18 @@ class KeanggotaanController extends Controller
      */
     public function store(Request $request)
     {
-        // $keanggotaan = new Keanggotaan();
-        // $keanggotaan->name = $request->name;
-        // $keanggotaan->username = $request->username;
-        // $keanggotaan->no_anggota = $request->no_anggota;
-        // $keanggotaan->email = $request->email;
-        // $keanggotaan->jabatan_id = $request->jabatan_id;
-        // $keanggotaan->divisi_id = $request->divisi_id;
+        $modul = new Modul();
+        $modul->title = $request->title;
+        $modul->user_id = Auth::id();
+        $modul->slug = Str::slug($request->title);
+        $modul->description = $request->description;
+        $modul['file'] = $request->file('file')->store(
+            'assets/files', 'public'
+        );
 
-        
+        $modul->save();
+
+        return redirect()->route('modul.index');
     }
 
     /**
@@ -63,7 +67,14 @@ class KeanggotaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $modul = Modul::findOrFail($id);
+        $user = User::all();
+
+        // $pdf = PDF::loadView('pages.admin.modul.show', compact('modul', 'user'));
+        // return $pdf->download('data_pasien.pdf');
+        // return $pdf->stream();
+
+        return view('pages.admin.modul.show', compact('modul', 'user'));
     }
 
     /**
@@ -74,10 +85,7 @@ class KeanggotaanController extends Controller
      */
     public function edit($id)
     {
-        $keanggotaan = Keanggotaan::findOrFail($id);
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.edit', compact('keanggotaan', 'jabatan', 'divisi'));
+        //
     }
 
     /**

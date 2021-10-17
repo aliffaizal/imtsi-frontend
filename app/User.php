@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'username', 'email', 'password', 'jabatan_id', 'divisi_id', 'no_anggota'
     ];
 
     /**
@@ -38,8 +38,15 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     //relasi antara table user dengan table artikel
-    public function artikel()
-    {
+    public function artikel(){
         return $this->hasMany(Artikel::class, 'user_id', 'id');
+    }
+
+    public function jabatan(){
+        return $this->belongsTo(Jabatan::class, 'jabatan_id', 'id');
+    }
+
+    public function divisi(){
+        return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
     }
 }

@@ -33,6 +33,7 @@ class ArtikelController extends Controller
     public function create()
     {
         $user = User::all();
+        
         return view('pages.admin.artikel.create', compact('user'));
     }
 

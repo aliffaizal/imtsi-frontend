@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Divisi;
 use App\Http\Controllers\Controller;
-use App\Jabatan;
-use App\Keanggotaan;
+use App\Wilayah;
 use Illuminate\Http\Request;
 
-class KeanggotaanController extends Controller
+class WilayahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,9 @@ class KeanggotaanController extends Controller
      */
     public function index()
     {
-        $keanggotaan = Keanggotaan::all();
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.index', compact('keanggotaan', 'jabatan', 'divisi'));
+        $wilayah = Wilayah::all();
+
+        return view('pages.admin.wilayah.index', compact('wilayah'));
     }
 
     /**
@@ -30,10 +27,7 @@ class KeanggotaanController extends Controller
      */
     public function create()
     {
-        $keanggotaan = Keanggotaan::all();
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.create', compact('keanggotaan', 'jabatan', 'divisi'));
+        //
     }
 
     /**
@@ -44,15 +38,11 @@ class KeanggotaanController extends Controller
      */
     public function store(Request $request)
     {
-        // $keanggotaan = new Keanggotaan();
-        // $keanggotaan->name = $request->name;
-        // $keanggotaan->username = $request->username;
-        // $keanggotaan->no_anggota = $request->no_anggota;
-        // $keanggotaan->email = $request->email;
-        // $keanggotaan->jabatan_id = $request->jabatan_id;
-        // $keanggotaan->divisi_id = $request->divisi_id;
+        $wilayah = $request->all();
 
-        
+        Wilayah::create($wilayah);
+
+        return redirect()->route('wilayah.index');
     }
 
     /**
@@ -74,10 +64,9 @@ class KeanggotaanController extends Controller
      */
     public function edit($id)
     {
-        $keanggotaan = Keanggotaan::findOrFail($id);
-        $jabatan = Jabatan::all();
-        $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.edit', compact('keanggotaan', 'jabatan', 'divisi'));
+        $wilayah = Wilayah::findOrFail($id);
+
+        return view('pages.admin.wilayah.edit', compact('wilayah'));
     }
 
     /**
@@ -89,7 +78,13 @@ class KeanggotaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $wilayah = [
+            'wilayah' => $request->wilayah
+        ];
+
+        Wilayah::whereId($id)->update($wilayah);
+
+        return redirect()->route('wilayah.index');
     }
 
     /**
@@ -100,6 +95,9 @@ class KeanggotaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $wilayah = Wilayah::findOrFail($id);
+        $wilayah->delete();
+        
+        return redirect()->back();
     }
 }
