@@ -38,9 +38,6 @@ Route::prefix('admin')
     Route::resource('instansi', 'InstansiController');
     Route::get('password', 'ProfilController@password')->name('password');
     Route::patch('password/update', 'ProfilController@changePassword')->name('password.edit');
-    Route::get('/user/profil/{user}', 'ProfilController@userProfil')->name('user.profil');
-    Route::get('/user/profil/edit/{user}', 'ProfilController@editUserProfil')->name('user.profil.edit');
-    Route::put('/user/profil/update/{user}', 'ProfilController@updateUserProfil')->name('user.profil.update');
 });
 
 Auth::routes();

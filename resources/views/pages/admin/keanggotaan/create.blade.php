@@ -19,7 +19,7 @@
 
         <div class="card shadow col-xl-8 col-lg-7">
             <div class="card-body">
-                <form action="{{ route('keanggotaan.create') }}" method="post">
+                <form action="{{ route('keanggotaan.store') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="title" class="font-weight-bolder">Nama Anggota</label>
@@ -71,7 +71,7 @@
                     <option value="">Pilih Jabatan</option>
                     @foreach ($jabatan as $item)
                         <option value="{{ $item->id }}">{{ $item->nama_jabatan }}</option>
-                        
+
                     @endforeach
                     </select>
                     @error('jabatan_id')
@@ -90,6 +90,50 @@
                     @endforeach
                     </select>
                     @error('divisi_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+
+                  <div class="form-group">
+                    <label for="title" class="font-weight-bolder">Instansi</label>
+                    <select name="instansi_id" class="form-control @error('instansi_id') is-invalid @enderror">
+                    <option value="">Pilih Instansi</option>
+                    @foreach ($instansi as $item)
+                        <option value="{{ $item->id }}">{{ $item->instansi }}</option>
+                    @endforeach
+                    </select>
+                    @error('instansi_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+
+                  <div class="form-group">
+                    <label for="title" class="font-weight-bolder">Wilayah</label>
+                    <select name="wilayah_id" class="form-control @error('wilayah_id') is-invalid @enderror">
+                    <option value="">Pilih Wilayah</option>
+                    @foreach ($wilayah as $item)
+                        <option value="{{ $item->id }}">{{ $item->wilayah }}</option>
+                    @endforeach
+                    </select>
+                    @error('wilayah_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+
+                  <div class="form-group">
+                    <label for="title" class="font-weight-bolder">Akses</label>
+                    <select name="roles" class="form-control @error('roles') is-invalid @enderror">
+                    <option value="">Pilih Akses</option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="USER">USER</option>
+                    </select>
+                    @error('roles')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

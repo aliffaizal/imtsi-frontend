@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Divisi;
 use App\Http\Controllers\Controller;
+use App\Instansi;
 use App\Jabatan;
 use App\Keanggotaan;
+use App\User;
+use App\Wilayah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class KeanggotaanController extends Controller
 {
@@ -33,7 +37,9 @@ class KeanggotaanController extends Controller
         $keanggotaan = Keanggotaan::all();
         $jabatan = Jabatan::all();
         $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.create', compact('keanggotaan', 'jabatan', 'divisi'));
+        $instansi = Instansi::all();
+        $wilayah = Wilayah::all();
+        return view('pages.admin.keanggotaan.create', compact('keanggotaan', 'jabatan', 'divisi', 'instansi', 'wilayah'));
     }
 
     /**
@@ -44,15 +50,25 @@ class KeanggotaanController extends Controller
      */
     public function store(Request $request)
     {
-        // $keanggotaan = new Keanggotaan();
-        // $keanggotaan->name = $request->name;
-        // $keanggotaan->username = $request->username;
-        // $keanggotaan->no_anggota = $request->no_anggota;
-        // $keanggotaan->email = $request->email;
-        // $keanggotaan->jabatan_id = $request->jabatan_id;
-        // $keanggotaan->divisi_id = $request->divisi_id;
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users|email',
+            'username' => 'required',
+            'no_anggota' => 'required|max:16',
+            'roles' => 'required',
+            'jabatan_id' => 'required',
+            'divisi_id' => 'required',
+            'instansi_id' => 'required',
+            'wilayah_id' => 'required',
+            'password' => 'required|min:8|confirmed',
+        ]);
 
-        
+        $data = $request->all();
+        $data['password'] = Hash::make($request->password);
+        User::create($data);
+        return redirect()->route('keanggotaan.index');
+
+
     }
 
     /**
@@ -77,7 +93,9 @@ class KeanggotaanController extends Controller
         $keanggotaan = Keanggotaan::findOrFail($id);
         $jabatan = Jabatan::all();
         $divisi = Divisi::all();
-        return view('pages.admin.keanggotaan.edit', compact('keanggotaan', 'jabatan', 'divisi'));
+        $instansi = Instansi::all();
+        $wilayah = Wilayah::all();
+        return view('pages.admin.keanggotaan.edit', compact('keanggotaan', 'jabatan', 'divisi', 'instansi', 'wilayah'));
     }
 
     /**
@@ -89,7 +107,23 @@ class KeanggotaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users|email',
+            'username' => 'required',
+            'no_anggota' => 'required|max:16',
+            'jabatan_id' => 'required',
+            'divisi_id' => 'required',
+            'instansi_id' => 'required',
+            'wilayah_id' => 'required',
+        ]);
+
+        $data = $request->all();
+        $user = User::findOrFail($id);
+
+        $user->update($data);
+
+        return redirect()->route('keanggotaan.index');
     }
 
     /**
@@ -100,6 +134,9 @@ class KeanggotaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $keanggotaan = User::findOrFail($id);
+        $keanggotaan->delete();
+
+        return redirect()->back();
     }
 }

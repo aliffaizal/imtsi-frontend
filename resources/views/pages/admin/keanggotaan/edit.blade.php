@@ -77,10 +77,52 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-                  </div
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="font-weight-bolder">Divisi</label>
+                    <select name="divisi_id" class="form-control @error('divisi_id') is-invalid @enderror">
+                    @foreach ($divisi as $item)
+                    <option value="{{ $item->id }}" {{ $item->id == $keanggotaan->divisi_id ? 'selected' : '' }}>{{ $item->nama_divisi }}</option>
+                    @endforeach
+                    </select>
+                    @error('divisi_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="font-weight-bolder">Instansi</label>
+                    <select name="instansi_id" class="form-control @error('instansi_id') is-invalid @enderror">
+                    @foreach ($instansi as $item)
+                    <option value="{{ $item->id }}" {{ $item->id == $keanggotaan->instansi_id ? 'selected' : '' }}>{{ $item->instansi }}</option>
+                    @endforeach
+                    </select>
+                    @error('instansi_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="font-weight-bolder">Wilayah</label>
+                    <select name="wilayah_id" class="form-control @error('wilayah_id') is-invalid @enderror">
+                    @foreach ($wilayah as $item)
+                    <option value="{{ $item->id }}" {{ $item->id == $keanggotaan->wilayah_id ? 'selected' : '' }}>{{ $item->wilayah }}</option>
+                    @endforeach
+                    </select>
+                    @error('wilayah_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
 
                 <div align="right">
-                    <button type="submit" class="btn btn-success">Tambah</button>
+                    <button type="submit" class="btn btn-success">Update</button>
                 </div>
                 </form>
             </div>
