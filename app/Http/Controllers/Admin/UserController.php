@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Divisi;
 use App\Http\Controllers\Controller;
+use App\Jabatan;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -16,8 +18,10 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all();
+        $jabatan = Jabatan::all();
+        $divisi = Divisi::all();
 
-        return view('pages.admin.manajemen_akses.index', compact('user'));
+        return view('pages.admin.manajemen_akses.index', compact('user', 'jabatan', 'divisi'));
     }
 
     /**
@@ -60,7 +64,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $jabatan = Jabatan::all();
+        $divisi = Divisi::all();
+
+        return view('pages.admin.manajemen_akses.edit', compact('user', 'jabatan', 'divisi'));
     }
 
     /**
@@ -72,7 +80,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'roles' => 'required'
+        ],[
+            'roles.required' => 'Wajib diisi',
+        ]);
+
+        $data = $request->all();
+        $user = User::findOrFail($id);
+
+        $user->update($data);
+        // dd($data);
+
+        return redirect()->route('user.index');
     }
 
     /**

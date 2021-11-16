@@ -39,16 +39,10 @@
             <div class="bg-white py-2 collapse-inner rounded">
               {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
               <a class="collapse-item" href="{{ route('artikel.index') }}">Artikel</a>
-              <a class="collapse-item" href="{{ route('gallery.index') }}">Gallery Kegiatan</a>
+              {{-- <a class="collapse-item" href="{{ route('gallery.index') }}">Gallery Kegiatan</a> --}}
             </div>
           </div>
         </li>
-
-        {{-- <li class="nav-item">
-          <a class="nav-link" href="{{ route('artikel.index') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Artikel</span></a>
-        </li> --}}
 
         <li class="nav-item">
           <a class="nav-link" href="{{ route('modul.index') }}">

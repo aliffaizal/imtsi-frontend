@@ -10,7 +10,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
             {{-- <a href="{{ route('keanggotaan.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Anggota   
+                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Anggota
             </a> --}}
         </div>
 
@@ -35,7 +35,7 @@
                                     <td>{{ $result->name }}</td>
                                     <td>{{ $result->roles }}</td>
                                     <td>
-                                        <a href="" class="btn btn-info">
+                                        <a href="{{ route('user.edit', $result->id) }}" class="btn btn-info">
                                             <i class="fa fa-pencil-alt"></i> Edit
                                         </a>
                                         <form action="" method="POST" class="d-inline">

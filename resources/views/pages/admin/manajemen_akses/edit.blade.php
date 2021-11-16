@@ -19,24 +19,14 @@
 
         <div class="card shadow col-xl-8 col-lg-7">
             <div class="card-body">
-                <form action="{{ route('keanggotaan.update', $keanggotaan->id) }}" method="post">
+                <form action="{{ route('user.update', $user->id) }}" method="post">
                 @csrf
+                @method('patch')
                 <div class="form-group">
                     <label for="title" class="font-weight-bolder">Nama Anggota</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-describedby="emailHelp"
-                        placeholder="Tambahkan Nama Anggota" value="{{ $keanggotaan->name }}" required>
+                        placeholder="Tambahkan Nama Anggota" value="{{ $user->name }}" required readonly>
                         @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="title" class="font-weight-bolder">Username</label>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" aria-describedby="emailHelp"
-                        placeholder="Tambahkan Username" value="{{ $keanggotaan->username }}" required>
-                        @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -46,7 +36,7 @@
                 <div class="form-group">
                     <label for="title" class="font-weight-bolder">No. Anggota</label>
                     <input type="number" class="form-control @error('no_anggota') is-invalid @enderror" name="no_anggota" aria-describedby="emailHelp"
-                        placeholder="Tambahkan No. Anggota" value="{{ $keanggotaan->no_anggota }}" required>
+                        placeholder="Tambahkan No. Anggota" value="{{ $user->no_anggota }}" required readonly>
                         @error('no_anggota')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -55,54 +45,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="title" class="font-weight-bolder">Email</label>
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" aria-describedby="emailHelp"
-                        placeholder="Tambahkan Email" value="{{ $keanggotaan->email }}" required>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="title" class="font-weight-bolder">Jabatan</label>
-                    <select name="jabatan_id" class="form-control @error('jabatan_id') is-invalid @enderror">
-                    @foreach ($jabatan as $item)
-                    <option value="{{ $item->id }}" {{ $item->id == $keanggotaan->jabatan_id ? 'selected' : '' }}>{{ $item->nama_jabatan }}</option>
-                    @endforeach
+                    <label for="title" class="font-weight-bolder">User Akses</label>
+                    {{-- <input type="text" class="form-control @error('roles') is-invalid @enderror" name="roles" aria-describedby="emailHelp" --}}
+                        {{-- placeholder="Tambahkan Username" value="{{ $user->roles }}" required> --}}
+                    <select name="roles" class="form-control">
+                        <option value="ADMIN" @if ($user->roles == 'ADMIN') selected @endif>ADMIN</option>
+                        <option value="USER" @if ($user->roles == 'USER') selected @endif>USER</option>
                     </select>
-                    @error('jabatan_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                  </div
-
-                {{-- <div class="form-group">
-                    <label for="title" class="font-weight-bolder">Password</label>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" aria-describedby="emailHelp"
-                        placeholder="Tambahkan Password" value="{{ $keanggotaan-> }}" required>
-                        @error('password')
+                        @error('roles')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                 </div>
-
-                <div class="form-group">
-                    <label for="title" class="font-weight-bolder">Konfirmasi Password</label>
-                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" aria-describedby="emailHelp"
-                        placeholder="Tambahkan Konfirmasi Password" value="{{ old('password_confirmation') }}" required>
-                        @error('password_confirmation')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                </div> --}}
 
                 <div align="right">
-                    <button type="submit" class="btn btn-success">Tambah</button>
+                    <button type="submit" class="btn btn-success">Ubah</button>
                 </div>
                 </form>
             </div>
