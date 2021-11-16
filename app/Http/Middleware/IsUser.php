@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class IsUser
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,11 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         //untuk mengecek apakah admin
-        if (Auth::check() && Auth::user()->roles == 'ADMIN') {
+        if (Auth::check() && auth::user()->roles == 'USER') {
             return $next($request);
-        } elseif (Auth::check() && Auth::user()->roles == 'USER') {
+        } elseif (Auth::check() && Auth::user()->roles == 'ADMIN') {
             # code...
-            return redirect('/user');
+            return redirect('/admin');
         } else {
             # code...
             return redirect('/');

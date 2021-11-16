@@ -28,7 +28,7 @@ Route::prefix('admin')
 ->group(function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('artikel', 'ArtikelController');
-    Route::resource('gallery', 'GalleryController');
+    // Route::resource('gallery', 'GalleryController');
     Route::resource('jabatan', 'JabatanController');
     Route::resource('divisi', 'DivisiController');
     Route::resource('keanggotaan', 'KeanggotaanController');
@@ -39,6 +39,27 @@ Route::prefix('admin')
     Route::get('password', 'ProfilController@password')->name('password');
     Route::patch('password/update', 'ProfilController@changePassword')->name('password.edit');
 });
+
+
+Route::prefix('user')
+->namespace('User')
+->middleware(['auth', 'user'])
+->group(function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::resource('artikel', 'ArtikelController');
+    // Route::resource('gallery', 'GalleryController');
+    Route::resource('jabatan', 'JabatanController');
+    Route::resource('divisi', 'DivisiController');
+    // Route::resource('keanggotaan', 'KeanggotaanController');
+    // Route::resource('user', 'UserController');
+    Route::resource('modul', 'ModulController');
+    Route::resource('wilayah', 'WilayahController');
+    Route::resource('instansi', 'InstansiController');
+    Route::get('password', 'ProfilController@password')->name('password');
+    Route::patch('password/update', 'ProfilController@changePassword')->name('password.edit');
+});
+
+
 
 Auth::routes();
 
