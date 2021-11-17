@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ArtikelController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +15,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage.home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('register', 'Auth\RegisterController@create');
+
+Route::view('profil', 'pages.profil');
+Route::view('kegiatan', 'pages.kegiatan');
+Route::post('register', 'Auth\RegisterController@register');
+
+Route::prefix('admin')
+->namespace('Admin')
+->middleware(['auth', 'admin'])
+->group(function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::resource('artikel', 'ArtikelController');
+    // Route::resource('gallery', 'GalleryController');
+    Route::resource('jabatan', 'JabatanController');
+    Route::resource('divisi', 'DivisiController');
+    Route::resource('keanggotaan', 'KeanggotaanController');
+    Route::resource('user', 'UserController');
+    Route::resource('modul', 'ModulController');
+    Route::resource('wilayah', 'WilayahController');
+    Route::resource('instansi', 'InstansiController');
+    Route::get('password', 'ProfilController@password')->name('password');
+    Route::patch('password/update', 'ProfilController@changePassword')->name('password.edit');
 });
-Route::view('profil', 'homepage.profil');
-Route::view('kegiatan', 'homepage.kegiatan');
+
+
+Route::prefix('user')
+->namespace('User')
+->middleware(['auth', 'user'])
+->group(function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::resource('artikel', 'ArtikelController');
+    // Route::resource('gallery', 'GalleryController');
+    Route::resource('jabatan', 'JabatanController');
+    Route::resource('divisi', 'DivisiController');
+    Route::resource('keanggotaan', 'KeanggotaanController');
+    // Route::resource('user', 'UserController');
+    Route::resource('modul', 'ModulController');
+    Route::resource('wilayah', 'WilayahController');
+    Route::resource('instansi', 'InstansiController');
+    Route::get('password', 'ProfilController@password')->name('password');
+    Route::patch('password/update', 'ProfilController@changePassword')->name('password.edit');
+});
+
+
+
+Auth::routes();
+
