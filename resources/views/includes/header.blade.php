@@ -17,7 +17,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/kegiatan">Kegiatan</a>
                 </li>
-                
+
                 @guest
                     {{-- Dekstop --}}
                     <form class="form-inline d-sm-block d-md-none">
@@ -35,6 +35,54 @@
                 @endguest
 
                 @auth
+                    {{-- Dekstop --}}
+                    <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-login my-2 my-sm-0" type="submit">
+                            Artikel
+                        </button>
+                    </form>
+
+                    {{-- Mobile --}}
+                    <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ url('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
+                            Artikel
+                        </button>
+                    </form>
+
+                    {{-- Dekstop --}}
+                    <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-login my-2 my-sm-0" type="submit">
+                            Modul
+                        </button>
+                    </form>
+
+                    {{-- Mobile --}}
+                    <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ url('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
+                            Modul
+                        </button>
+                    </form>
+
+                    {{-- Dekstop --}}
+                    {{-- <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-login my-2 my-sm-0" type="submit">
+                            Keorganisasian
+                        </button>
+                    </form> --}}
+
+                    {{-- Mobile
+                    <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ url('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
+                            Keorganisasian
+                        </button>
+                    </form> --}}
+
                     {{-- Dekstop --}}
                     <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
                         @csrf

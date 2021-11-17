@@ -50,7 +50,7 @@ Route::prefix('user')
     // Route::resource('gallery', 'GalleryController');
     Route::resource('jabatan', 'JabatanController');
     Route::resource('divisi', 'DivisiController');
-    // Route::resource('keanggotaan', 'KeanggotaanController');
+    Route::resource('keanggotaan', 'KeanggotaanController');
     // Route::resource('user', 'UserController');
     Route::resource('modul', 'ModulController');
     Route::resource('wilayah', 'WilayahController');
