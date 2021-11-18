@@ -10,7 +10,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
             <a href="{{ route('modul.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Modul   
+                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Modul
             </a>
         </div>
 
@@ -25,7 +25,7 @@
                                 <th>File</th>
                                 <th>Author</th>
                                 <th>Deskripsi</th>
-                                <th>Action</th>
+                                {{-- <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -34,14 +34,14 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $result->title }}</td>
                                     <td>
-                                        <a href="{{ route('modul.show', $result->id) }}" class="btn btn-success">
+                                        <a href="{{ route('user.modul.show', $result->id) }}" class="btn btn-success">
                                             View
                                         </a>
 
                                     </td>
                                     <td>{{ $result->user->name }}</td>
                                     <td>{!! $result->description !!}</td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="{{ route('modul.edit', $result->id) }}" class="btn btn-info">
                                             <i class="fa fa-pencil-alt"></i> Edit
                                         </a>
@@ -53,7 +53,7 @@
                                             <i class="fa fa-trash"></i> Delete
                                         </button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

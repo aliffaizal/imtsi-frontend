@@ -36,23 +36,23 @@
 
                 @auth
                     {{-- Dekstop --}}
-                    <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
+                    <a href="{{ route('user.artikel.index') }}" class="form-inline d-sm-block d-md-none" action="#" method="POST">
                         @csrf
                         <button class="btn btn-login my-2 my-sm-0" type="submit">
                             Artikel
                         </button>
-                    </form>
+                    </a>
 
                     {{-- Mobile --}}
-                    <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ url('logout') }}" method="POST">
+                    <a href="{{ route('user.artikel.index') }}" class="form-inline my-2 my-lg-0 d-none d-md-block" action="#" method="POST">
                         @csrf
                         <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
                             Artikel
                         </button>
-                    </form>
+                    </a>
 
                     {{-- Dekstop --}}
-                    <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
+                    <form class="form-inline d-sm-block d-md-none" action="{{ url('user.modul.index') }}" method="POST">
                         @csrf
                         <button class="btn btn-login my-2 my-sm-0" type="submit">
                             Modul
@@ -60,12 +60,12 @@
                     </form>
 
                     {{-- Mobile --}}
-                    <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ url('logout') }}" method="POST">
+                    <a href="{{ route('user.modul.index') }}" class="form-inline my-2 my-lg-0 d-none d-md-block" action="#" method="POST">
                         @csrf
                         <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
                             Modul
                         </button>
-                    </form>
+                    </a>
 
                     {{-- Dekstop --}}
                     {{-- <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">

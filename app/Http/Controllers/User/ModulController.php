@@ -16,6 +16,7 @@ class ModulController extends Controller
      */
     public function index()
     {
+
         $modul = Modul::all();
         $user = User::all();
 
@@ -51,7 +52,10 @@ class ModulController extends Controller
      */
     public function show($id)
     {
-        //
+        $modul = Modul::findOrFail($id);
+        $user = User::all();
+
+        return view('pages.user.modul.show', compact('modul', 'user'));
     }
 
     /**
