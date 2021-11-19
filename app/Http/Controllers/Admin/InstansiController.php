@@ -38,11 +38,17 @@ class InstansiController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'instansi' => 'required'
+        ], [
+            'instansi.requeired' => 'Harus Diisi'
+        ]);
+
         $instansi = $request->all();
 
         Instansi::create($instansi);
 
-        return redirect()->route('instansi.index');
+        return redirect()->route('instansi.index')->with('message', 'Data Berhasil Disimpan!');
     }
 
     /**
@@ -78,13 +84,19 @@ class InstansiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'instansi' => 'required'
+        ], [
+            'instansi.requeired' => 'Harus Diisi'
+        ]);
+
         $instansi = [
             'instansi' => $request->instansi
         ];
 
         Instansi::whereId($id)->update($instansi);
 
-        return redirect()->route('instansi.index');
+        return redirect()->route('instansi.index')->with('message', 'Data Berhasil Diubah');
     }
 
     /**
@@ -97,7 +109,7 @@ class InstansiController extends Controller
     {
         $instansi = Instansi::findOrFail($id);
         $instansi->delete();
-        
-        return redirect()->back();
+
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

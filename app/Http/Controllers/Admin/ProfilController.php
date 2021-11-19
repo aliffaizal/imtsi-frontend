@@ -37,7 +37,7 @@ class ProfilController extends Controller
         ]);
 
         Auth::logout();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Password Berhasil Diubah');
 
 
     }

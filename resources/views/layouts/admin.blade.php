@@ -77,6 +77,8 @@
 
 @include('includes.admin.scripts')
 
+@include('sweetalert::alert')
+
 @stack('scripts')
 
 </body>

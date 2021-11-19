@@ -33,7 +33,7 @@ class ArtikelController extends Controller
     public function create()
     {
         $user = User::all();
-        
+
         return view('pages.admin.artikel.create', compact('user'));
     }
 
@@ -46,6 +46,11 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         // $slug = Str::slug($request->title);
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'thumbnail' => 'required',
+        ]);
 
         $artikel = new Artikel();
         $artikel->title = $request->title;
@@ -58,7 +63,7 @@ class ArtikelController extends Controller
 
         $artikel->save();
 
-        return redirect()->route('artikel.index');
+        return redirect()->route('artikel.index')->with('message', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -94,6 +99,11 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'thumbnail' => 'required',
+        ]);
         $artikel = Artikel::findOrFail($id);
         // $slug = Str::slug($request->title);
 
@@ -113,7 +123,7 @@ class ArtikelController extends Controller
 
         $artikel->update($data);
 
-        return redirect()->route('artikel.index');
+        return redirect()->route('artikel.index')->with('message', 'Data Berhasil Diubah');
     }
 
     /**
@@ -129,6 +139,6 @@ class ArtikelController extends Controller
 
         $artikel->delete();
 
-        return redirect()->route('artikel.index');
+        return redirect()->route('artikel.index')->with('message', 'Data Berhasil Dihapus');
     }
 }

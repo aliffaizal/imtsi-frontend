@@ -92,7 +92,7 @@ class UserController extends Controller
         $user->update($data);
         // dd($data);
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message', 'Data Berhasil Diubah');
     }
 
     /**

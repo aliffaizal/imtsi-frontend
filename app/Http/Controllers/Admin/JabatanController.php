@@ -38,12 +38,15 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $this->validate($request, [
+            'nama_jabatan' => 'required'
+        ]);
 
         $jabatan = $request->all();
 
         Jabatan::create($jabatan);
 
-        return redirect()->route('jabatan.index');
+        return redirect()->route('jabatan.index')->with('message', "Data Berhasil Disimpan");
     }
 
     /**
@@ -79,13 +82,17 @@ class JabatanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_jabatan' => 'required'
+        ]);
+
         $jabatan = [
             'nama_jabatan' => $request->nama_jabatan
         ];
 
         Jabatan::whereId($id)->update($jabatan);
 
-        return redirect()->route('jabatan.index');
+        return redirect()->route('jabatan.index')->with('message', "Data Berhasil Diubah");
     }
 
     /**
@@ -98,7 +105,7 @@ class JabatanController extends Controller
     {
         $jabatan = Jabatan::findOrFail($id);
         $jabatan->delete();
-        
-        return redirect()->back();
+
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

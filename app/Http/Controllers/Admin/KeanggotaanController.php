@@ -66,7 +66,7 @@ class KeanggotaanController extends Controller
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
         User::create($data);
-        return redirect()->route('keanggotaan.index');
+        return redirect()->route('keanggotaan.index')->with('message', 'Data Berhasil Disimpan');
 
 
     }
@@ -123,7 +123,7 @@ class KeanggotaanController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('keanggotaan.index');
+        return redirect()->route('keanggotaan.index')->with('message', 'Data Berhasil Diubah');
     }
 
     /**
@@ -137,6 +137,6 @@ class KeanggotaanController extends Controller
         $keanggotaan = User::findOrFail($id);
         $keanggotaan->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

@@ -10,9 +10,20 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
             <a href="{{ route('artikel.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Artikel   
+                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Artikel
             </a>
         </div>
+
+        @if (session('message'))
+            <div class="alert alert-success alert-dismissible show-fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>x</span>
+                    </button>
+                    {{session('message')}}
+                </div>
+            </div>
+        @endif
 
         <div class="row">
             <div class="card-body">

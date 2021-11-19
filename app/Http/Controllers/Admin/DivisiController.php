@@ -37,11 +37,15 @@ class DivisiController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_divisi' => 'required'
+        ]);
+
         $divisi = $request->all();
 
         Divisi::create($divisi);
 
-        return redirect()->route('divisi.index');
+        return redirect()->route('divisi.index')->with('message', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -83,7 +87,7 @@ class DivisiController extends Controller
 
         Divisi::whereId($id)->update($divisi);
 
-        return redirect()->route('divisi.index');
+        return redirect()->route('divisi.index')->with('message', 'Data Berhasil Diubah');
     }
 
     /**
@@ -96,7 +100,7 @@ class DivisiController extends Controller
     {
         $divisi = Divisi::findOrFail($id);
         $divisi->delete();
-        
-        return redirect()->back();
+
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

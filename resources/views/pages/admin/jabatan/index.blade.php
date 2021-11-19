@@ -10,13 +10,24 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
             {{-- <a href="{{ route('jabatan.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Jabatan   
+                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Jabatan
             </a> --}}
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
                 <i class="fas fa-plus fa sm text-white"></i> Tambah Jabatan
             </button>
         </div>
+
+        @if (session('message'))
+            <div class="alert alert-success alert-dismissible show-fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>x</span>
+                    </button>
+                    {{session('message')}}
+                </div>
+            </div>
+        @endif
 
         <div class="row">
             <div class="card-body">
@@ -58,7 +69,7 @@
 
       </div>
       <!-- /.container-fluid -->
-  
+
       <!-- Modal Create -->
       <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -82,7 +93,7 @@
                                 </span>
                             @enderror
                     </div>
-    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

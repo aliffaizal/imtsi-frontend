@@ -14,6 +14,17 @@
           <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
         </div>
 
+        @if (session('message'))
+            <div class="alert alert-success alert-dismissible show-fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>x</span>
+                    </button>
+                    {{session('message')}}
+                </div>
+            </div>
+        @endif
+
         <div class="card shadow">
             <div class="card-body">
                 <form action="{{ route('password.edit') }}" method="post">
@@ -21,7 +32,7 @@
                 @method('PATCH')
                 <div class="form-group">
                     <label for="old_password">Password Lama</label>
-                    <input type="password" class="form-control @error('old_password') is-invalid @enderror" 
+                    <input type="password" class="form-control @error('old_password') is-invalid @enderror"
                     id="old_password" name="old_password"
                     placeholder="Masukkan password lama anda ...">
                     @error('old_password')
@@ -45,8 +56,8 @@
 
                 <div class="form-group">
                     <label for="password_confirmation">Konfirmasi Password Baru</label>
-                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" 
-                    id="password_confirmation" name="password_confirmation" 
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+                    id="password_confirmation" name="password_confirmation"
                     placeholder="Konfirmasi password anda ...">
                     @error('password_confirmation')
                     <span class="invalid-feedback" role="alert">

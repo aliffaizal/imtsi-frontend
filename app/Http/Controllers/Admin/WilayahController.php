@@ -38,11 +38,16 @@ class WilayahController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'wilayah' => 'required'
+        ]);
+
         $wilayah = $request->all();
 
         Wilayah::create($wilayah);
 
-        return redirect()->route('wilayah.index');
+        return redirect()->route('wilayah.index')->with('message', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -78,13 +83,18 @@ class WilayahController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $this->validate($request, [
+            'wilayah' => 'required'
+        ]);
+
         $wilayah = [
             'wilayah' => $request->wilayah
         ];
 
         Wilayah::whereId($id)->update($wilayah);
 
-        return redirect()->route('wilayah.index');
+        return redirect()->route('wilayah.index')->with('message', 'Data Berhasil Diubah');
     }
 
     /**
@@ -97,7 +107,7 @@ class WilayahController extends Controller
     {
         $wilayah = Wilayah::findOrFail($id);
         $wilayah->delete();
-        
-        return redirect()->back();
+
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }
