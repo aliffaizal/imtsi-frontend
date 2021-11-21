@@ -243,6 +243,51 @@ body {
     text-align-last: center;
     font-size: 14px;
 }
+.login{
+    margin-bottom: 50px;
+}
+.card-artikel{
+    border-radius: 50px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+}
+.card i{
+    margin-top: 30px;
+}
+.card{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.card-artikel .card{
+    border-radius: 20px;
+}
+.card-artikel a{
+    color: black;
+    text-decoration: none;
+}
+.card-artikel p{
+    color:gray;
+}
+.card-artikel img{
+    padding: 0;
+
+    border-radius: 20px;
+}
+.detail-artikel img{
+    border-radius: 20px;
+    max-height: 400px;
+    margin-bottom: 20px;
+}
+.detail-artikel{
+    justify-content: center;
+    text-align: center;
+}
+.detail-artikel p{
+    margin-top: 20px;
+}
+.detail-artikel .penulis{
+    font-size: 14px;
+}
 @media (max-width: 767px) {
     .site-footer {
         padding-bottom: 0;
@@ -262,5 +307,8 @@ body {
     #visi img {
         /* display: none; */
         max-height: 300px;
+    }
+    #footer li a{
+        font-size: 12px;
     }
 }

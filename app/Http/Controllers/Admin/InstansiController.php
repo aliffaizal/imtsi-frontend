@@ -15,7 +15,7 @@ class InstansiController extends Controller
      */
     public function index()
     {
-        $instansi = Instansi::all();
+        $instansi = Instansi::paginate(10);
 
         return view('pages.admin.instansi.index', compact('instansi'));
     }

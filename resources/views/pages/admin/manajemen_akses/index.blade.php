@@ -49,12 +49,13 @@
                                         <a href="{{ route('user.edit', $result->id) }}" class="btn btn-info">
                                             <i class="fa fa-pencil-alt"></i> Edit
                                         </a>
-                                        <form action="" method="POST" class="d-inline">
-                                        @csrf
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash"></i> Delete
-                                        </button>
-                                        </form>
+                                        <form action="{{ route('user.destroy',$result->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </button>
+                                            </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -68,5 +69,5 @@
 
       </div>
       <!-- /.container-fluid -->
-
+      {{ $user->links() }}
 @endsection

@@ -78,4 +78,5 @@
       </div>
       <!-- /.container-fluid -->
 
+      {{ $modul->links() }}
 @endsection

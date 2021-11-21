@@ -105,4 +105,6 @@
         </div>
       </div>
 
+
+      {{ $wilayah->links() }}
 @endsection

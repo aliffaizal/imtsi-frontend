@@ -105,4 +105,5 @@
         </div>
       </div>
 
+      {{ $jabatan->links() }}
 @endsection

@@ -74,4 +74,6 @@
       </div>
       <!-- /.container-fluid -->
 
+
+      {{ $keanggotaan->links() }}
 @endsection

@@ -20,7 +20,7 @@ class ModulController extends Controller
      */
     public function index()
     {
-        $modul = Modul::all();
+        $modul = Modul::paginate(10);
         $user = User::all();
 
         return view('pages.admin.modul.index', compact('modul', 'user'));

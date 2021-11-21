@@ -14,75 +14,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/profil">Profil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/kegiatan">Kegiatan</a>
-                </li>
 
                 @guest
-                    {{-- Dekstop --}}
-                    <form class="form-inline d-sm-block d-md-none">
-                        <button class="btn btn-login my-2 my-sm-0" type="button" onclick="event.preventDefault();  location.href='{{ url('login') }}';">
-                            Login
-                        </button>
-                    </form>
-
-                    {{-- Mobile --}}
-                    <form class="form-inline my-2 my-lg-0 d-none d-md-block">
-                        <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" type="button" onclick="event.preventDefault(); location.href='{{ url('login') }}';">
-                            Login
-                        </button>
-                    </form>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
                 @endguest
 
                 @auth
-                    {{-- Dekstop --}}
-                    <a href="{{ route('user.artikel.index') }}" class="form-inline d-sm-block d-md-none" action="#" method="POST">
-                        @csrf
-                        <button class="btn btn-login my-2 my-sm-0" type="submit">
-                            Artikel
-                        </button>
-                    </a>
-
                     {{-- Mobile --}}
-                    <a href="{{ route('user.artikel.index') }}" class="form-inline my-2 my-lg-0 d-none d-md-block" action="#" method="POST">
-                        @csrf
-                        <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
-                            Artikel
-                        </button>
-                    </a>
-
-                    {{-- Dekstop --}}
-                    <form class="form-inline d-sm-block d-md-none" action="{{ url('user.modul.index') }}" method="POST">
-                        @csrf
-                        <button class="btn btn-login my-2 my-sm-0" type="submit">
-                            Modul
-                        </button>
-                    </form>
-
-                    {{-- Mobile --}}
-                    <a href="{{ route('user.modul.index') }}" class="form-inline my-2 my-lg-0 d-none d-md-block" action="#" method="POST">
-                        @csrf
-                        <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
-                            Modul
-                        </button>
-                    </a>
-
-                    {{-- Dekstop --}}
-                    {{-- <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
-                        @csrf
-                        <button class="btn btn-login my-2 my-sm-0" type="submit">
-                            Keorganisasian
-                        </button>
-                    </form> --}}
-
-                    {{-- Mobile
-                    <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ url('logout') }}" method="POST">
-                        @csrf
-                        <button class="btn btn-login btn-navbar-right my-2 my-sm-0" type="submit">
-                            Keorganisasian
-                        </button>
-                    </form> --}}
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.artikel.index') }}">Artikel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.modul.index') }}">Modul</a>
+                    </li>
                     {{-- Dekstop --}}
                     <form class="form-inline d-sm-block d-md-none" action="{{ url('logout') }}" method="POST">
                         @csrf
@@ -98,10 +44,9 @@
                             Logout
                         </button>
                     </form>
+
                 @endauth
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-user-o" aria-hidden="true"></i></a>
-                </li> --}}
+
             </ul>
         </div>
     </div>

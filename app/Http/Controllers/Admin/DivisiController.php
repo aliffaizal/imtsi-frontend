@@ -15,7 +15,7 @@ class DivisiController extends Controller
      */
     public function index()
     {
-        $divisi = Divisi::all();
+        $divisi = Divisi::paginate(10);
         return view('pages.admin.divisi.index', compact('divisi'));
     }
 

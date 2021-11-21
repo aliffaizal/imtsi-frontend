@@ -19,7 +19,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::all();
+        $artikel = Artikel::paginate(10);
         $user = User::all();
 
         return view('pages.admin.artikel.index', compact('artikel', 'user'));

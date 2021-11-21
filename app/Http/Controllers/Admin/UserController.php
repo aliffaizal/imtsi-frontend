@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::paginate(10);
         $jabatan = Jabatan::all();
         $divisi = Divisi::all();
 
@@ -103,6 +103,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with('message', 'Data Berhasil Dihapus');
     }
 }

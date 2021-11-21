@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
-@section('content')
 @section('title', 'Artikel')
+
+{{-- @push('style')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+@endpush --}}
+
+@section('content')
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -28,7 +33,7 @@
         <div class="row">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-striped" id="data">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -75,4 +80,16 @@
       </div>
       <!-- /.container-fluid -->
 
+      {{ $artikel->links() }}
+
 @endsection
+
+{{-- @push('scripts')
+<script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready( function () {
+        $('#data').DataTable();
+    } );
+</script>
+@endpush --}}

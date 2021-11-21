@@ -2,61 +2,27 @@
 @section('title','Artikel')
 @section('content')
 
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container">
+      <h1 class="h3 mb-3 text-gray-800">@yield('title')</h1>
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
-            {{-- <a href="{{ route('artikel.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa sm text-white-50"></i> Tambah Artikel
-            </a> --}}
+      <div class="card-artikel">
+          <div class="row">
+        @foreach ($artikel as $result)
+        <div class="col-md-4">
+            <div class="card card-artikel" style="width: 18rem;">
+                <img class="card-img-top" src="{{ Storage::url($result->thumbnail) }}" alt="Card image cap" style="height: 180px;">
+                <div class="card-body">
+                  <a href="{{route('user.artikel.show', $result->id)}}">
+                    <h4 class="card-title">{{ $result->title }}</h4>
+                  </a>
+                  <p class="card-text">{{ $result->user->name }}</p>
+                </div>
+              </div>
         </div>
-
-  <div class="row">
-      <div class="card-body">
-          <div class="table-responsive">
-              <table class="table table-bordered" width="100%" cellspacing="0">
-                  <thead>
-                      <tr>
-                          <th>No.</th>
-                          <th>Title</th>
-                          <th>Thumbnail</th>
-                          <th>Author</th>
-                          <th>Konten</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      @foreach ($artikel as $result)
-                          <tr>
-                              <td>{{ $loop->iteration }}</td>
-                              <td>{{ $result->title }}</td>
-                              <td>
-                                  <img src="{{ Storage::url($result->thumbnail) }}" alt="" style="width: 150px"
-                                  class="img-thumbnail" />
-                              </td>
-                              <td>{{ $result->user->name }}</td>
-                              <td>{!! $result->content !!}</td>
-                              <td>
-                                  <a href="{{ route('artikel.edit', $result->id) }}" class="btn btn-info">
-                                      <i class="fa fa-pencil-alt"></i> Show
-                                  </a>
-                                  {{-- <form action="{{ route('artikel.destroy',$result->id) }}" method="POST" class="d-inline">
-                                  @csrf
-                                  @method('delete')
-                                  <button class="btn btn-danger">
-                                      <i class="fa fa-trash"></i> Delete
-                                  </button>
-                                  </form> --}}
-                              </td>
-                          </tr>
-                      @endforeach
-                  </tbody>
-              </table>
-          </div>
+        @endforeach
       </div>
+    </div>
   </div>
 
-
+{{ $artikel->links() }}
 @endsection

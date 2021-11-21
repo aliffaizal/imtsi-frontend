@@ -21,7 +21,7 @@ class KeanggotaanController extends Controller
      */
     public function index()
     {
-        $keanggotaan = Keanggotaan::all();
+        $keanggotaan = Keanggotaan::paginate(10);
         $jabatan = Jabatan::all();
         $divisi = Divisi::all();
         return view('pages.admin.keanggotaan.index', compact('keanggotaan', 'jabatan', 'divisi'));

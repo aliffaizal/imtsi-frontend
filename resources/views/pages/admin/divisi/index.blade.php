@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
-@section('content')
 @section('title', 'Divisi')
+
+@section('content')
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -32,7 +33,7 @@
         <div class="row">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-striped" id>
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -105,4 +106,5 @@
         </div>
       </div>
 
+      {{ $divisi->links() }}
 @endsection

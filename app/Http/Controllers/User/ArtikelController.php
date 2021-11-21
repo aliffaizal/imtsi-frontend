@@ -16,7 +16,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::all();
+        $artikel = Artikel::paginate(9);
         $user = User::all();
 
         return view('pages.user.artikel.index', compact('artikel', 'user'));
@@ -51,7 +51,10 @@ class ArtikelController extends Controller
      */
     public function show($id)
     {
-        //
+        $artikel = Artikel::findOrFail($id);
+        $user = User::all();
+
+        return view('pages.user.artikel.detail', compact('artikel', 'user'));
     }
 
     /**
